@@ -5,7 +5,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\Details;
 
 use PPFrame;
-use MediaWiki\Parser\Parser;
+use Parser;
 use MediaWiki\Parser\Sanitizer;
 
 class Summary {
