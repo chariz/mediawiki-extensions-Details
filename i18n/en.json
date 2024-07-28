@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adam Demasi"
+		]
+	},
+	"details-desc": "Semantic, browser-supported collapsible content in articles using <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> tags.",
+	"details-category": "Pages using Details parser tag"
+}

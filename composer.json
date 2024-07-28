@@ -1,0 +1,26 @@
+{
+	"name": "chariz/mediawiki-extension-details",
+	"type": "mediawiki-extension",
+	"description": "Semantic, browser-supported collapsible content in articles using <details> and <summary> tags.",
+	"keywords": [
+		"mediawiki",
+		"collapsible",
+		"collapse",
+		"semantic"
+	],
+	"homepage": "https://www.mediawiki.org/wiki/Extension:Details",
+	"readme": "README.md",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Adam Demasi",
+			"email": "adam@chariz.com",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Details",
+		"wiki": "https://www.mediawiki.org/wiki/Extension:Details",
+		"source": "https://github.com/chariz/mediawiki-extensions-Details"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"private": true,
+	"scripts": {
+		"lint": "npm -s run lint:js && npm -s run lint:i18n",
+		"lint:fix:js": "npm -s run lint:js -- --fix",
+		"lint:fix:styles": "npm -s run lint:styles -- --fix",
+		"lint:js": "eslint --cache --max-warnings 0 .",
+		"lint:styles": "stylelint \"**/*.{less,css}\"",
+		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
+	},
+	"devDependencies": {
+		"@types/jquery": "^3.5.30",
+		"@wikimedia/types-wikimedia": "^0.4.4",
+		"eslint": "^8.57.0",
+		"eslint-config-wikimedia": "^0.28.2",
+		"stylelint": "^16.7.0",
+		"stylelint-config-idiomatic-order": "^10.0.0",
+		"stylelint-config-wikimedia": "^0.17.2"
+	}
+}

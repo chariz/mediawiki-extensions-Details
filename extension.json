@@ -1,0 +1,73 @@
+{
+	"name": "Details",
+	"version": "1.0.0",
+	"author": [
+		"Adam Demasi"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Details",
+	"descriptionmsg": "details-desc",
+	"type": "parserhook",
+	"license-name": "GPL-3.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.39.0"
+	},
+	"MessagesDirs": {
+		"Details": [
+			"/i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Details\\": "includes/"
+	},
+	"TrackingCategories": [
+		"details-category"
+	],
+	"ResourceModules": {
+		"ext.details.styles": {
+			"styles": [
+				"ext.details.styles/ext.details.styles.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.details": {
+			"scripts": [
+				"ext.details/ext.details.js"
+			],
+			"dependencies": [
+				"jquery.makeCollapsible",
+				"jquery.makeCollapsible.styles"
+			],
+			"messages": [
+				"collapsible-expand",
+				"collapsible-collapse"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "Details/modules"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "DetailsHooks"
+	},
+	"HookHandlers": {
+		"DetailsHooks": {
+			"class": "MediaWiki\\Extension\\Details\\Hooks"
+		}
+	},
+	"attributes": {
+		"CodeMirror": {
+			"TagModes": {
+				"details": "text/mediawiki"
+			}
+		}
+	},
+	"manifest_version": 2
+}
