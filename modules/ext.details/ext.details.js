@@ -108,7 +108,7 @@ mw.hook( 'wikipage.content' )
 	.add( () => {
 		// Make sure the browser supports <details> toggle event, if not, we’ll gracefully degrade
 		const test = document.createElement( 'details' );
-		if ( !( 'dontoggle' in test ) ) {
+		if ( !( 'ontoggle' in test ) ) {
 			$( 'html' )
 				.addClass( 'details--not-available' );
 			return;
