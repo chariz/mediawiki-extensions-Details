@@ -39,13 +39,13 @@ function makeCollapsible( el ) {
 
 	const collapsible = {
 		collapse: () => {
-			details[ 0 ].open = false;
+			el.open = false;
 		},
 		expand: () => {
-			details[ 0 ].open = true;
+			el.open = true;
 		},
 		toggle: () => {
-			details[ 0 ].open = !details[ 0 ].open;
+			el.open = !el.open;
 		}
 	};
 
@@ -56,8 +56,8 @@ function makeCollapsible( el ) {
 		.addClass( 'mw-collapsible mw-made-collapsible' );
 
 	// If the user added non-semantic class="mw-collapsed", close it for them
-	if ( details.hasClass( 'mw-collapsed' ) && details[ 0 ].open ) {
-		details[ 0 ].open = false;
+	if ( details.hasClass( 'mw-collapsed' ) && el.open ) {
+		el.open = false;
 	}
 
 	// Find where we need to put the toggle link
@@ -101,7 +101,7 @@ function makeCollapsible( el ) {
 
 	// Fire hook to be compatible with jquery.makeCollapsible.js
 	mw.hook( 'wikipage.collapsibleContent' )
-		.fire( details[ 0 ] );
+		.fire( el );
 }
 
 mw.hook( 'wikipage.content' )
