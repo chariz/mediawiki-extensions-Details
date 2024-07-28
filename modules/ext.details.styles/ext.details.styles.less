@@ -5,7 +5,13 @@
 		// to be loaded shortly. If the browser doesn’t support HTMLDetailsElement.toggle(), we’ll
 		// add .details--not-available to html, revealing the brower’s disclosure arrow again (if any).
 		summary:first-of-type {
+			// Chrome, Firefox
 			list-style: none;
+
+			// Safari
+			&::-webkit-details-marker {
+				display: none;
+			}
 		}
 	}
 }
