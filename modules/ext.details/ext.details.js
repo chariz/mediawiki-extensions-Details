@@ -9,7 +9,7 @@ function handleToggled( toggle, details, options ) {
 }
 
 function makeToggle( options ) {
-	return $( '<button type="button" class="mw-collapsible-toggle mw-collapsible-toggle-default">' )
+	return $( '<span class="mw-collapsible-toggle mw-collapsible-toggle-default" role="presentation" aria-hidden="true">' )
 		.addClass( 'mw-collapsible-toggle' )
 		.append( $( '<span class="mw-collapsible-text">' )
 			.text( options.toggleText.collapseText ) );
@@ -77,16 +77,6 @@ function makeCollapsible( el ) {
 		toggle.replaceWith( newToggle );
 		toggle = newToggle;
 	}
-
-	// Set up the toggle
-	toggle
-		.prop( 'tabIndex', 0 )
-		.on( 'click.mw-collapsible keydown.mw-collapsible', function () {
-			$( this )
-				.closest( '.details--root.mw-made-collapsible' )
-				.data( 'mw-collapsible' )
-				.toggle();
-		} );
 
 	// Set up toggle state
 	handleToggled( toggle, details, options );
