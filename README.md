@@ -52,7 +52,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Remember that the content comes **before** the parameters when using `{{#tag:…}}`.
 
 ## Compatibility
-Supports MediaWiki 1.41 and later. (Likely will work on earlier versions, but not officially tested or supported.)
+
+Supports MediaWiki 1.41 and later.
 
 Browser support is required for collapsible content to work:
 
