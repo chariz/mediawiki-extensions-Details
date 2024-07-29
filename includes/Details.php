@@ -11,6 +11,7 @@ use MediaWiki\Parser\Sanitizer;
 class Details {
 	private const HEAD_PARTS = [ 'head', 'top' ];
 	private const FOOT_PARTS = [ 'foot', 'bottom', 'tail' ];
+	private const FALSY_VALUES = [ 'no', 'n', 'false', 'off', '0' ];
 
 	public static function parserHook( ?string $input, array $args, Parser $parser, PPFrame $frame ) {
 		$part = $args['part'] ?? null;
@@ -39,8 +40,9 @@ class Details {
 			// Sanitize to attributes that would be valid on a <div>
 			$attrs = Sanitizer::safeEncodeTagAttributes( Sanitizer::validateTagAttributes( $args, 'div' ) );
 
-			// Add open attribute manually if set, because the sanitizer will have stripped it out
-			if ( isset( $args['open'] ) ) {
+			// Add open attribute manually if set, because the sanitizer will have stripped it out.
+			// We also support some falsy values, to help templates that use the open attribute.
+			if ( isset( $args['open'] ) && !in_array( strtolower( $args['open'] ), Details::FALSY_VALUES ) ) {
 				$attrs .= ' open';
 			}
 
