@@ -37,6 +37,7 @@
 				"ext.details/ext.details.js"
 			],
 			"dependencies": [
+				"mediawiki.util",
 				"jquery.makeCollapsible",
 				"jquery.makeCollapsible.styles"
 			],

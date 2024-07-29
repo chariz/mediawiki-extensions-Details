@@ -94,6 +94,29 @@ function makeCollapsible( el ) {
 		.fire( el );
 }
 
+function handleHashChange() {
+	const fragment = mw.util.getTargetFromFragment();
+	if ( !fragment ) {
+		// The fragment doesn't exist
+		return;
+	}
+
+	const parents = $( fragment ).parents( 'details:not([open])' );
+	if ( !parents.length ) {
+		// The fragment is not in a collapsed element
+		return;
+	}
+
+	// Expand collapsed parents
+	parents.each( ( _, el ) => {
+		const details = /** @type {JQuery<HTMLDetailsElement>} */ ( $( el ) );
+		details[ 0 ].open = true;
+	} );
+
+	// Scroll to the fragment
+	fragment.scrollIntoView();
+}
+
 mw.hook( 'wikipage.content' )
 	.add( () => {
 		// Make sure the browser supports <details> toggle event, if not, we’ll gracefully degrade
@@ -107,4 +130,10 @@ mw.hook( 'wikipage.content' )
 		// Set up details elements
 		$( '.details--root:not(.mw-made-collapsible)' )
 			.each( ( _, el ) => makeCollapsible( el ) );
+
+		// Handle hashchange if browser doesn’t support hidden-until-found
+		if ( !( 'onbeforematch' in document.body ) ) {
+			handleHashChange();
+			$( window ).on( 'hashchange', handleHashChange );
+		}
 	} );
