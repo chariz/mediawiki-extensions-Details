@@ -9,30 +9,52 @@ use Parser;
 use MediaWiki\Parser\Sanitizer;
 
 class Details {
+	private const HEAD_PARTS = [ 'head', 'top' ];
+	private const FOOT_PARTS = [ 'foot', 'bottom', 'tail' ];
+
 	public static function parserHook( ?string $input, array $args, Parser $parser, PPFrame $frame ) {
-		// Handling a self-closing tag is pointless
-		if ( $input === null ) {
+		$part = $args['part'] ?? null;
+
+		// Handle invalid part
+		if ( $part !== null && !in_array( $part, Details::HEAD_PARTS ) && !in_array( $part, Details::FOOT_PARTS ) ) {
+			$part = null;
+		}
+
+		// Handle an invalid self-closing tag
+		if ( $input === null && $part === null ) {
 			return '';
 		}
 
 		// Add tracking category
 		$parser->addTrackingCategory( 'details-category' );
 
-		// Add our attributes
-		$args = Sanitizer::mergeAttributes( [
-			'class' => 'details--root'
-		], $args);
+		$result = '';
 
-		// Sanitize to attributes that would be valid on a <div>
-		$attrs = Sanitizer::safeEncodeTagAttributes( Sanitizer::validateTagAttributes( $args, 'div' ) );
+		if ( !in_array( $part, Details::FOOT_PARTS ) ) {
+			// Add our attributes
+			$args = Sanitizer::mergeAttributes( [
+				'class' => 'details--root'
+			], $args);
 
-		// Add open attribute manually if set, because the sanitizer will have stripped it out
-		if ( isset( $args['open'] ) ) {
-			$attrs .= ' open';
+			// Sanitize to attributes that would be valid on a <div>
+			$attrs = Sanitizer::safeEncodeTagAttributes( Sanitizer::validateTagAttributes( $args, 'div' ) );
+
+			// Add open attribute manually if set, because the sanitizer will have stripped it out
+			if ( isset( $args['open'] ) ) {
+				$attrs .= ' open';
+			}
+
+			$result .= '<details ' . $attrs . '>';
 		}
 
-		return '<details ' . $attrs . '>' .
-			trim( $parser->recursiveTagParse( $input, $frame ) ) .
-			'</details>';
+		if ( !in_array( $part, Details::HEAD_PARTS ) && !in_array( $part, Details::FOOT_PARTS ) ) {
+			$result .= trim( $parser->recursiveTagParse( $input, $frame ) );
+		}
+
+		if ( !in_array( $part, Details::HEAD_PARTS ) ) {
+			$result .= '</details>';
+		}
+
+		return $result;
 	}
 }
