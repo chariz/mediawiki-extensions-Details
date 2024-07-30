@@ -2,26 +2,26 @@
 
 // Styles a details block to be visually distinct from its surroundings
 .wikicollapse {
-	background-color: @background-color-neutral-subtle;
-	color: @color-base;
-	margin: 1em 0;
+	overflow: hidden;
 	padding: 0.2em 0.4em;
 	border: @border-base;
 	border-radius: @border-radius-base;
+	margin: 1em 0;
+	background-color: @background-color-neutral-subtle;
+	color: @color-base;
 	font-size: 87.5%;
-	overflow: hidden;
 
 	> summary:first-of-type {
-		margin: -0.2em -0.4em;
 		padding: 0.4em;
-		font-weight: @font-weight-semi-bold;
-		font-size: 114%;
+		margin: -0.2em -0.4em;
 		cursor: pointer;
+		font-size: 114%;
+		font-weight: @font-weight-semi-bold;
 		user-select: none;
 
 		.mw-collapsible-toggle {
-			font-weight: @font-weight-normal;
 			font-size: 87.5%;
+			font-weight: @font-weight-normal;
 		}
 	}
 
