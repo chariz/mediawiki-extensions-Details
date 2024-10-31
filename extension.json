@@ -1,6 +1,6 @@
 {
 	"name": "Details",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"author": [
 		"Adam Demasi"
 	],
@@ -9,7 +9,7 @@
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.41.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"MessagesDirs": {
 		"Details": [
@@ -61,6 +61,12 @@
 	"HookHandlers": {
 		"DetailsHooks": {
 			"class": "MediaWiki\\Extension\\Details\\Hooks"
+		}
+	},
+	"config": {
+		"DetailsMWCollapsibleCompatibility": {
+			"value": true,
+			"description": "@var bool Enable or disable compatibility mode with mw-collapsible"
 		}
 	},
 	"attributes": {
