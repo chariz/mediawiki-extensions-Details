@@ -5,11 +5,11 @@
 	overflow: hidden;
 	box-sizing: border-box;
 	padding: 0.2em 0.4em;
-	border: @border-base;
-	border-radius: @border-radius-base;
+	border: default( @border-base, 1px solid #a2a9b1 ) );
+	border-radius: default( @border-radius-base, 2px );
 	margin: 1em 0;
-	background-color: @background-color-neutral-subtle;
-	color: @color-base;
+	background-color: default( @background-color-neutral-subtle, #f8f9fa );
+	color: default( @color-base, #202122 );
 	font-size: 87.5%;
 
 	> summary:first-of-type {
@@ -17,12 +17,12 @@
 		margin: -0.2em -0.4em;
 		cursor: pointer;
 		font-size: 114%;
-		font-weight: @font-weight-semi-bold;
+		font-weight: default( @font-weight-semi-bold, 600 );
 		user-select: none;
 
 		.mw-collapsible-toggle {
 			font-size: 87.5%;
-			font-weight: @font-weight-normal;
+			font-weight: default( @font-weight-normal, 400 );
 		}
 	}
 
