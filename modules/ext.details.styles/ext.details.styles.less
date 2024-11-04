@@ -1,3 +1,11 @@
+// Polyfill LESS variables
+@border-base: 1px solid #a2a9b1;
+@border-radius-base: 2px;
+@background-color-neutral-subtle: #f8f9fa;
+@color-base: #202122;
+@font-weight-semi-bold: 600;
+@font-weight-normal: 400;
+
 @import 'mediawiki.skin.variables.less';
 
 // Styles a details block to be visually distinct from its surroundings
@@ -5,11 +13,11 @@
 	overflow: hidden;
 	box-sizing: border-box;
 	padding: 0.2em 0.4em;
-	border: default( @border-base, 1px solid #a2a9b1 ) );
-	border-radius: default( @border-radius-base, 2px );
+	border: @border-base;
+	border-radius: @border-radius-base;
 	margin: 1em 0;
-	background-color: default( @background-color-neutral-subtle, #f8f9fa );
-	color: default( @color-base, #202122 );
+	background-color: @background-color-neutral-subtle;
+	color: @color-base;
 	font-size: 87.5%;
 
 	> summary:first-of-type {
@@ -17,12 +25,12 @@
 		margin: -0.2em -0.4em;
 		cursor: pointer;
 		font-size: 114%;
-		font-weight: default( @font-weight-semi-bold, 600 );
+		font-weight: @font-weight-semi-bold;
 		user-select: none;
 
 		.mw-collapsible-toggle {
 			font-size: 87.5%;
-			font-weight: default( @font-weight-normal, 400 );
+			font-weight: @font-weight-normal;
 		}
 	}
 
