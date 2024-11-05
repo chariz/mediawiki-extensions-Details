@@ -4,16 +4,24 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\Details;
 
+use MediaWiki\MediaWikiServices;
 use PPFrame;
 use Parser;
-use MediaWiki\Parser\Sanitizer;
+/* TODO: Switch to MediaWiki\\Parser\\Sanitizer when Sanitizer fallback is fully dropped */ 
+use Sanitizer;
 
 class Details {
 	private const HEAD_PARTS = [ 'head', 'top' ];
 	private const FOOT_PARTS = [ 'foot', 'bottom', 'tail' ];
 	private const FALSY_VALUES = [ 'no', 'n', 'false', 'off', '0' ];
 
+	/* @var bool */
+	private static $compatibilityMode = true;
+
 	public static function parserHook( ?string $input, array $args, Parser $parser, PPFrame $frame ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		self::$compatibilityMode =  $config->get( 'DetailsMWCollapsibleCompatibility' );
+
 		$part = $args['part'] ?? null;
 
 		// Handle invalid part
@@ -33,9 +41,11 @@ class Details {
 
 		if ( !in_array( $part, Details::FOOT_PARTS ) ) {
 			// Add our attributes
-			$args = Sanitizer::mergeAttributes( [
-				'class' => 'details--root'
-			], $args);
+			if ( self::$compatibilityMode === true ) {
+				$args = Sanitizer::mergeAttributes( [
+					'class' => 'details--root'
+				], $args);
+			}
 
 			// Sanitize to attributes that would be valid on a <div>
 			$attrs = Sanitizer::safeEncodeTagAttributes( Sanitizer::validateTagAttributes( $args, 'div' ) );
