@@ -53,7 +53,7 @@ Remember that the content comes **before** the parameters when using `{{#tag:…
 
 ## Compatibility
 
-Supports MediaWiki 1.41 and later.
+Supports MediaWiki 1.39 and later.
 
 Browser support is required for collapsible content to work:
 
@@ -61,31 +61,38 @@ Browser support is required for collapsible content to work:
 
 All browsers as of 2017 are fully supported. Specifically, the [`HTMLDetailsElement` toggle event](https://caniuse.com/mdn-api_htmldetailselement_toggle_event) is required to implement the collapse/expand toggle button.
 
-* Chrome 36+ (37+ on Android)
-* Firefox 49+
-* Safari 10.1+ (iOS 10.3+)
+- Chrome 36+ (37+ on Android)
+- Firefox 49+
+- Safari 10.1+ (iOS 10.3+)
 
 ### Partially supported
 
 These browsers do not support the toggle event, but will [gracefully degrade](https://en.wikipedia.org/wiki/Fault_tolerance) to using the browser’s built-in toggling functionality. Clicking anywhere within the `<summary>` row will toggle the contents.
 
-* Chrome 10+ (2011)
-* Safari 6.0+ (2012, iOS 6.0+)
+- Chrome 10+ (2011)
+- Safari 6.0+ (2012, iOS 6.0+)
 
 ### No support
 
 These browsers do not support `<details>` and `<summary>` at all. Contents of both tags will be displayed as-is.
 
-* Internet Explorer
-* EdgeHTML-based Edge (18 and earlier)
-* Presto-based Opera (12 and earlier)
-* Opera Mini
+- Internet Explorer
+- EdgeHTML-based Edge (18 and earlier)
+- Presto-based Opera (12 and earlier)
+- Opera Mini
 
 ## Installation
 
 Visit [Extension:Details](https://www.mediawiki.org/wiki/Extension:Details) on MediaWiki.org for current installation instructions.
 
+## Configuration
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| `$wgDetailsMWCollapsibleCompatibility` | `true` | Controls whether Details loads CSS and JavaScript to enhance the `<details>` and `<summary>` tags. This makes them act similar to `mw-collapsible`, and introduces the `wikicollapsible` class, which styles much like a `wikitable`. If disabled, the browser’s default styling and behavior is used. |
+
 ## Credits
+
 <p align="center">
 <a href="https://chariz.com/">
 <img src="https://chariz.com/img/chariz-logo-head@3x.png" width="166" height="60">
@@ -101,4 +108,5 @@ Partly based on [jquery.makeCollapsible](https://github.com/wikimedia/mediawiki/
 Huge thanks to [alistair3149](https://github.com/alistair3149), who has been super supportive of The Apple Wiki since we started. I used his extension, [TabberNeue](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue), as a template for this one.
 
 ## License
+
 Licensed under the GNU General Public License, version 3.0 or later. Refer to [LICENSE.md](https://github.com/chariz/mediawiki-extension-Details/blob/main/LICENSE.md).
