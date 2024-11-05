@@ -89,7 +89,7 @@ Visit [Extension:Details](https://www.mediawiki.org/wiki/Extension:Details) on M
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| `$wgDetailsMWCollapsibleCompatibility` | `true` | Controls whether Details loads CSS and JavaScript to enhance the `<details>` and `<summary>` tags. This makes them act similar to `mw-collapsible`, and introduces the `wikicollapsible` class, which styles much like a `wikitable`. If disabled, the browser’s default styling and behavior is used. |
+| `$wgDetailsMWCollapsibleCompatibility` | `true` | Controls whether Details loads CSS and JavaScript to enhance the `<details>` and `<summary>` tags. This makes them act similar to `mw-collapsible`, and introduces the `wikicollapse` class, which styles much like a `wikitable`. If disabled, the browser’s default styling and behavior is used. |
 
 ## Credits
 
